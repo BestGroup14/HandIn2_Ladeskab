@@ -6,10 +6,9 @@ using System.Threading.Tasks;
 
 namespace HandIn2_Ladeskab
 {
-    class Program
+    class CurrentEventArgs : EventArgs
     {
-        static void Main(string[] args)
-        {
-        }
+        // Value in mA (milliAmpere)
+        public double Current { set; get; }
     }
 }
