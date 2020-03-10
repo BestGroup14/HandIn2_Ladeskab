@@ -43,8 +43,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ChargeControl.cs" />
+    <Compile Include="CurrentEventArgs.cs" />
+    <Compile Include="Display.cs" />
+    <Compile Include="Door.cs" />
+    <Compile Include="IChargeControl.cs" />
+    <Compile Include="IDisplay.cs" />
+    <Compile Include="IDoor.cs" />
+    <Compile Include="ILogFile.cs" />
+    <Compile Include="IRFIDReader.cs" />
+    <Compile Include="IUSBCharger.cs" />
+    <Compile Include="LogFile.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RFIDReader.cs" />
+    <Compile Include="USBCharger.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
