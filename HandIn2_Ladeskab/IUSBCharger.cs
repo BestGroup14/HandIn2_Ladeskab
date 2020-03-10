@@ -6,16 +6,20 @@ using System.Threading.Tasks;
 
 namespace HandIn2_Ladeskab
 {
-    public interface IUSBCharger
+    public interface IUsbCharger
     {
-        event EventHandler<CurrentEventArgs> CurrentValueEven;
+        // Event triggered on new current value
+        event EventHandler<CurrentEventArgs> CurrentValueEvent;
 
-        double CurrentValue { get; set; }
+        // Direct access to the current current value
+        double CurrentValue { get; }
 
-        bool Connected { get; set; }
+        // Require connection status of the phone
+        bool Connected { get; }
 
+        // Start charging
         void StartCharge();
-
+        // Stop charging
         void StopCharge();
     }
 }
