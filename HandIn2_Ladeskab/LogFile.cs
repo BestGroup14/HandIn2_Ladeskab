@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace HandIn2_Ladeskab
 {
-    public class LogFile : ILogFile
+    public class LogFile : ILogFile 
     {
         public void LogDoorLocked(int Id)
         {
