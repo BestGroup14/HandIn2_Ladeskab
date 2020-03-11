@@ -8,6 +8,7 @@ namespace HandIn2_Ladeskab
 {
     public class UsbChargerSimulator : IUsbCharger
     {
+
         // Constants
         private const double MaxCurrent = 500.0; // mA
         private const double FullyChargedCurrent = 2.5; // mA
@@ -115,4 +116,6 @@ namespace HandIn2_Ladeskab
             CurrentValueEvent?.Invoke(this, new CurrentEventArgs() { Current = this.CurrentValue });
         }
     }
+
+
 }
