@@ -10,7 +10,7 @@ namespace HandIn2_Ladeskab
     {
         public void ShowMessage(string message)
         {
-            throw new NotImplementedException();
+            Console.WriteLine(message);
         }
     }
 }

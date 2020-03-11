@@ -1,15 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
+using HandIn2_Ladeskab;
 
 namespace Application_Ladeskab
 {
     class Program
     {
+
         static void Main(string[] args)
         {
+            IDoor door = new Door();
+            IRFIDReader rfidReader = new RFIDReader();
+            
 
             // Assemble your system here from all the classes
 
@@ -28,11 +34,11 @@ namespace Application_Ladeskab
                         break;
 
                     case 'O':
-                        door.OnDoorOpen();
+                        door.OpenDoor();
                         break;
 
                     case 'C':
-                        door.OnDoorClose();
+                        door.CloseDoor();
                         break;
 
                     case 'R':
@@ -40,7 +46,7 @@ namespace Application_Ladeskab
                         string idString = System.Console.ReadLine();
 
                         int id = Convert.ToInt32(idString);
-                        rfidReader.OnRfidRead(id);
+                        rfidReader;
                         break;
 
                     default:

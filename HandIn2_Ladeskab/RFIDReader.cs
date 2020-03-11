@@ -8,6 +8,6 @@ namespace HandIn2_Ladeskab
 {
     public class RFIDReader : IRFIDReader
     {
-        public int RFIDNumber { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public int RFIDNumber { get; set; }
     }
 }

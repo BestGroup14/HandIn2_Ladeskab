@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,10 +21,17 @@ namespace HandIn2_Ladeskab
         private LadeskabState _state;
         private IUsbCharger _charger;
         private int _oldId;
+        private IDoor _door;
 
         private string logFile = "logfile.txt"; // Navnet på systemets log-fil
 
         // Her mangler constructor
+        public StationControl(IDoor door)
+        {
+            _door = door;
+            _door.DoorOpenedEvent += DoorOpened;
+            _door.DoorClosedEvent += DoorClosed;
+        }
 
         // Eksempel på event handler for eventet "RFID Detected" fra tilstandsdiagrammet for klassen
         private void RfidDetected(int id)
@@ -76,6 +84,51 @@ namespace HandIn2_Ladeskab
                     }
 
                     break;
+            }
+        }
+
+        public void DoorOpened(Object obj, EventArgs e)
+        {
+            //switch states
+
+            switch (_state)
+            {
+                case LadeskabState.Available:
+                // tilslut telefon + doorOpen
+
+
+                case LadeskabState.DoorOpen:
+                    // udskrive fejl i logfil
+                    break;
+
+                case LadeskabState.Locked:
+                    // fejl - har ikke brugt rfid
+
+
+                    break;
+
+            }
+        }
+
+        public void DoorClosed(Object obj, EventArgs e)
+        {
+            //Switch states
+            switch (_state)
+            {
+                case LadeskabState.Available:
+                // 
+
+
+                case LadeskabState.DoorOpen:
+                    // 
+                    break;
+
+                case LadeskabState.Locked:
+                    // 
+
+
+                    break;
+
             }
         }
 

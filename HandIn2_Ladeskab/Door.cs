@@ -8,24 +8,34 @@ namespace HandIn2_Ladeskab
 {
     public class Door : IDoor
     {
-        public void CloseDoor()
+        private IDisplay _display;
+
+        public event EventHandler DoorOpenedEvent;
+        public event EventHandler DoorClosedEvent;
+        public Door(IDisplay display)
         {
-            throw new NotImplementedException();
+            _display = display;
+        }
+        public void CloseDoor()
+        { 
+            DoorClosedEvent?.Invoke(this,new EventArgs());
         }
 
         public void LockDoor()
         {
-            throw new NotImplementedException();
+            _display.ShowMessage("Ladeskab låst");
         }
+
 
         public void OpenDoor()
         {
-            throw new NotImplementedException();
+            DoorOpenedEvent?.Invoke(this,new EventArgs());
+
         }
 
         public void UnlockDoor()
         {
-            throw new NotImplementedException();
+            _display.ShowMessage("Døren er låst op");
         }
     }
 }

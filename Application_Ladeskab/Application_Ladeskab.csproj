@@ -49,5 +49,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\HandIn2_Ladeskab\HandIn2_Ladeskab.csproj">
+      <Project>{e08bb010-f9ec-417b-acce-8c91bc068f4e}</Project>
+      <Name>HandIn2_Ladeskab</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
