@@ -33,6 +33,10 @@ namespace HandIn2_Ladeskab
             _door.DoorClosedEvent += DoorClosed;
         }
 
+        //Skal kun starte og stoppe ladning gennem denne stationControl
+
+
+
         // Eksempel på event handler for eventet "RFID Detected" fra tilstandsdiagrammet for klassen
         private void RfidDetected(int id)
         {
@@ -97,6 +101,9 @@ namespace HandIn2_Ladeskab
                 // tilslut telefon + doorOpen
                 _door.OpenDoor();
                 Console.WriteLine("Tilslut telefon");
+                _state = LadeskabState.DoorOpen;
+
+
                 break;
 
 
@@ -106,7 +113,6 @@ namespace HandIn2_Ladeskab
 
                 case LadeskabState.Locked:
                     // fejl - har ikke brugt rfid
-
 
                     break;
 
