@@ -13,7 +13,8 @@ namespace Application_Ladeskab
 
         static void Main(string[] args)
         {
-            IDoor door = new Door();
+            IDisplay display = new Display();
+            IDoor door = new Door(display);
             IRFIDReader rfidReader = new RFIDReader();
             
 

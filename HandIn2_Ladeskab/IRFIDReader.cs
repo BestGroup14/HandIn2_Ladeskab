@@ -10,6 +10,8 @@ namespace HandIn2_Ladeskab
     {
         //int RFIDNumber { get; set; }
 
+        void OnRfidRead(int id);
+
         event EventHandler<RFIDReaderEventArgs> RFIDReaderEvent;
     }
 }
