@@ -24,7 +24,7 @@ namespace HandIn2_Ladeskab
         private int _oldId;
         private IDoor _door;
         private IRFIDReader _rfidReader;
-
+        private int CurrentID { get; set; }
 
 
         private string logFile = "logfile.txt"; // Navnet på systemets log-fil
@@ -41,7 +41,8 @@ namespace HandIn2_Ladeskab
 
         private void RfidDetected(Object obj, RFIDReaderEventArgs e)
         {
-            
+            CurrentID = e.RFID;
+            RfidDetected(CurrentID);
         }
 
         //Skal kun starte og stoppe ladning gennem denne stationControl
