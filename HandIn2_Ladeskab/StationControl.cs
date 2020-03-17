@@ -95,6 +95,9 @@ namespace HandIn2_Ladeskab
             {
                 case LadeskabState.Available:
                 // tilslut telefon + doorOpen
+                _door.OpenDoor();
+                Console.WriteLine("Tilslut telefon");
+                break;
 
 
                 case LadeskabState.DoorOpen:
