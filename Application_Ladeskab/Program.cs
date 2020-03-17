@@ -46,7 +46,7 @@ namespace Application_Ladeskab
                         string idString = System.Console.ReadLine();
 
                         int id = Convert.ToInt32(idString);
-                        rfidReader;
+                        rfidReader.OnRfidRead(id);
                         break;
 
                     default:

@@ -8,6 +8,8 @@ namespace HandIn2_Ladeskab
 {
     public interface IRFIDReader
     {
-        int RFIDNumber { get; set; }
+        //int RFIDNumber { get; set; }
+
+        event EventHandler<RFIDReaderEventArgs> RFIDReaderEvent;
     }
 }
