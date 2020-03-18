@@ -25,6 +25,7 @@ namespace HandIn2_Ladeskab
         private int _oldId;
         private IDoor _door;
         private IRFIDReader _rfidReader;
+        private IDisplay _display;
         private int CurrentID { get; set; }
 
 
@@ -32,9 +33,10 @@ namespace HandIn2_Ladeskab
 
 
         // Her mangler constructor
-        public StationControl(IDoor door, IRFIDReader rfidReader)
+        public StationControl(IDoor door, IRFIDReader rfidReader, IDisplay display)
         {
             _door = door;
+            _display = display;
             _door.DoorOpenedEvent += DoorOpened;
             _door.DoorClosedEvent += DoorClosed;
             _rfidReader = rfidReader;
@@ -70,12 +72,12 @@ namespace HandIn2_Ladeskab
                             writer.WriteLine(DateTime.Now + ": Skab låst med RFID: {0}", id);
                         }
 
-                        Console.WriteLine("Skabet er låst og din telefon lades. Brug dit RFID tag til at låse op.");
+                        _display.ShowMessage("Skabet er låst og din telefon lades. Brug dit RFID tag til at låse op.");
                         _state = LadeskabState.Locked;
                     }
                     else
                     {
-                        Console.WriteLine("Din telefon er ikke ordentlig tilsluttet. Prøv igen.");
+                        _display.ShowMessage("Din telefon er ikke ordentlig tilsluttet. Prøv igen.");
                     }
 
                     break;
@@ -95,12 +97,12 @@ namespace HandIn2_Ladeskab
                             writer.WriteLine(DateTime.Now + ": Skab låst op med RFID: {0}", id);
                         }
 
-                        Console.WriteLine("Tag din telefon ud af skabet og luk døren");
+                        _display.ShowMessage("Tag din telefon ud af skabet og luk døren");
                         _state = LadeskabState.Available;
                     }
                     else
                     {
-                        Console.WriteLine("Forkert RFID tag");
+                        _display.ShowMessage("Forkert RFID tag");
                     }
 
                     break;
@@ -118,7 +120,7 @@ namespace HandIn2_Ladeskab
                 case LadeskabState.Available:
                 // tilslut telefon + doorOpen
                 _door.OpenDoor();
-                Console.WriteLine("Tilslut telefon");
+                _display.ShowMessage("Tilslut telefon");
                 _state = LadeskabState.DoorOpen;
 
                 break;
@@ -147,7 +149,7 @@ namespace HandIn2_Ladeskab
 
                 case LadeskabState.DoorOpen: 
                     _door.CloseDoor();
-                    Console.WriteLine("Indlæs RFID");
+                    _display.ShowMessage("Indlæs RFID");
                     _state = LadeskabState.Available;
                     break;
 
