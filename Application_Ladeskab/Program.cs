@@ -17,7 +17,8 @@ namespace Application_Ladeskab
             IDoor door = new Door(display);
             IRFIDReader rfidReader = new RFIDReader();
             IUsbCharger charger = new UsbChargerSimulator();
-            StationControl stationControl = new StationControl(door,rfidReader,display,charger);
+            ILogFile log = new LogFile();
+            StationControl stationControl = new StationControl(door,rfidReader,display,charger,log);
             
 
             // Assemble your system here from all the classes

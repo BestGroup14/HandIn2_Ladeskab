@@ -26,18 +26,17 @@ namespace HandIn2_Ladeskab
         private IDoor _door;
         private IRFIDReader _rfidReader;
         private IDisplay _display;
+        private ILogFile _log;
         private int CurrentID { get; set; }
-
-
-        private string logFile = "logfile.txt"; // Navnet på systemets log-fil
-
+        
 
         // Her mangler constructor
-        public StationControl(IDoor door, IRFIDReader rfidReader, IDisplay display, IUsbCharger charger)
+        public StationControl(IDoor door, IRFIDReader rfidReader, IDisplay display, IUsbCharger charger, ILogFile log)
         {
             _door = door;
             _display = display;
             _charger = charger;
+            _log = log;
             _door.DoorOpenedEvent += DoorOpened;
             _door.DoorClosedEvent += DoorClosed;
             _rfidReader = rfidReader;
@@ -68,10 +67,8 @@ namespace HandIn2_Ladeskab
                         _door.LockDoor();
                         _charger.StartCharge();
                         _oldId = id;
-                        using (var writer = File.AppendText(logFile))
-                        {
-                            writer.WriteLine(DateTime.Now + ": Skab låst med RFID: {0}", id);
-                        }
+                        
+                        _log.LogDoorLocked(_oldId);
 
                         _display.ShowMessage("Skabet er låst og din telefon lades. Brug dit RFID tag til at låse op.");
                         _state = LadeskabState.Locked;
@@ -93,10 +90,8 @@ namespace HandIn2_Ladeskab
                     {
                         _charger.StopCharge();
                         _door.UnlockDoor();
-                        using (var writer = File.AppendText(logFile))
-                        {
-                            writer.WriteLine(DateTime.Now + ": Skab låst op med RFID: {0}", id);
-                        }
+                       
+                        _log.LogDoorUnlocked(_oldId);
 
                         _display.ShowMessage("Tag din telefon ud af skabet og luk døren");
                         _state = LadeskabState.Available;
