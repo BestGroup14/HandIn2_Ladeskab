@@ -119,11 +119,11 @@ namespace HandIn2_Ladeskab
                 break;
 
                 case LadeskabState.DoorOpen:
-                    // udskrive fejl i logfil
+                    // ignore
                     break;
 
                 case LadeskabState.Locked:
-                    // fejl - har ikke brugt rfid
+                    // ignore
 
                     break;
 
