@@ -18,6 +18,7 @@ namespace HandIn2_Ladeskab
             DoorOpen
         };
 
+
         // Her mangler flere member variable
         private LadeskabState _state;
         private IUsbCharger _charger;
@@ -29,6 +30,7 @@ namespace HandIn2_Ladeskab
 
         private string logFile = "logfile.txt"; // Navnet på systemets log-fil
 
+
         // Her mangler constructor
         public StationControl(IDoor door, IRFIDReader rfidReader)
         {
@@ -38,6 +40,7 @@ namespace HandIn2_Ladeskab
             _rfidReader = rfidReader;
             _rfidReader.RFIDReaderEvent += RfidDetected;
         }
+
 
         private void RfidDetected(Object obj, RFIDReaderEventArgs e)
         {
@@ -104,6 +107,8 @@ namespace HandIn2_Ladeskab
             }
         }
 
+
+
         public void DoorOpened(Object obj, EventArgs e)
         {
             //switch states
@@ -130,26 +135,24 @@ namespace HandIn2_Ladeskab
             }
         }
 
+
         public void DoorClosed(Object obj, EventArgs e)
         {
             //Switch states
             switch (_state)
             {
                 case LadeskabState.Available:
-                // Ignore
-
+                    // Ignore
                     break;
 
                 case LadeskabState.DoorOpen: 
                     _door.CloseDoor();
                     Console.WriteLine("Indlæs RFID");
                     _state = LadeskabState.Available;
-                    
                     break;
 
                 case LadeskabState.Locked:
                     // Ignore
-
                     break;
             }
         }
