@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -22,15 +23,26 @@ namespace HandIn2_Ladeskab
         private IUsbCharger _charger;
         private int _oldId;
         private IDoor _door;
+        private IRFIDReader _rfidReader;
+        private int CurrentID { get; set; }
+
 
         private string logFile = "logfile.txt"; // Navnet på systemets log-fil
 
         // Her mangler constructor
-        public StationControl(IDoor door)
+        public StationControl(IDoor door, IRFIDReader rfidReader)
         {
             _door = door;
             _door.DoorOpenedEvent += DoorOpened;
             _door.DoorClosedEvent += DoorClosed;
+            _rfidReader = rfidReader;
+            _rfidReader.RFIDReaderEvent += RfidDetected;
+        }
+
+        private void RfidDetected(Object obj, RFIDReaderEventArgs e)
+        {
+            CurrentID = e.RFID;
+            RfidDetected(CurrentID);
         }
 
         //Skal kun starte og stoppe ladning gennem denne stationControl
@@ -38,6 +50,7 @@ namespace HandIn2_Ladeskab
 
 
         // Eksempel på event handler for eventet "RFID Detected" fra tilstandsdiagrammet for klassen
+        // Måske lave om, så vi kalder interface i stedet for 
         private void RfidDetected(int id)
         {
             switch (_state)
@@ -105,9 +118,7 @@ namespace HandIn2_Ladeskab
                 Console.WriteLine("Tilslut telefon");
                 _state = LadeskabState.DoorOpen;
 
-
                 break;
-
 
                 case LadeskabState.DoorOpen:
                     // udskrive fejl i logfil
@@ -128,22 +139,22 @@ namespace HandIn2_Ladeskab
             switch (_state)
             {
                 case LadeskabState.Available:
-                // ingenting
+                // Ignore
 
+                    break;
 
-                case LadeskabState.DoorOpen:
-                    // ny tilstand
+                case LadeskabState.DoorOpen: 
+                    _door.CloseDoor();
+                    Console.WriteLine("Indlæs RFID");
+                    _state = LadeskabState.Available;
+                    
                     break;
 
                 case LadeskabState.Locked:
-                    // ingenting
-
+                    // Ignore
 
                     break;
-
             }
         }
-
-        // Her mangler de andre trigger handlere
     }
 }

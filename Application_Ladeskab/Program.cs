@@ -13,7 +13,8 @@ namespace Application_Ladeskab
 
         static void Main(string[] args)
         {
-            IDoor door = new Door();
+            IDisplay display = new Display();
+            IDoor door = new Door(display);
             IRFIDReader rfidReader = new RFIDReader();
             
 
@@ -46,7 +47,7 @@ namespace Application_Ladeskab
                         string idString = System.Console.ReadLine();
 
                         int id = Convert.ToInt32(idString);
-                        rfidReader;
+                        rfidReader.OnRfidRead(id);
                         break;
 
                     default:
