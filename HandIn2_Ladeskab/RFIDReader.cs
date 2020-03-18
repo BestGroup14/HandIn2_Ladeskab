@@ -19,11 +19,10 @@ namespace HandIn2_Ladeskab
 
         public void OnRfidRead(int id)
         {
-            if (id != _oldRFIDNumber)
-            {
-                DetectRFID(new RFIDReaderEventArgs{RFID = id});
-                _oldRFIDNumber = id;
-            }
+
+            DetectRFID(new RFIDReaderEventArgs{RFID = id});
+               // _oldRFIDNumber = id;
+            
         }
 
         protected virtual void DetectRFID(RFIDReaderEventArgs e)

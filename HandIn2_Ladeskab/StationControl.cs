@@ -33,10 +33,11 @@ namespace HandIn2_Ladeskab
 
 
         // Her mangler constructor
-        public StationControl(IDoor door, IRFIDReader rfidReader, IDisplay display)
+        public StationControl(IDoor door, IRFIDReader rfidReader, IDisplay display, IUsbCharger charger)
         {
             _door = door;
             _display = display;
+            _charger = charger;
             _door.DoorOpenedEvent += DoorOpened;
             _door.DoorClosedEvent += DoorClosed;
             _rfidReader = rfidReader;
@@ -119,7 +120,7 @@ namespace HandIn2_Ladeskab
             {
                 case LadeskabState.Available:
                 // tilslut telefon + doorOpen
-                _door.OpenDoor();
+                
                 _display.ShowMessage("Tilslut telefon");
                 _state = LadeskabState.DoorOpen;
 
@@ -148,7 +149,7 @@ namespace HandIn2_Ladeskab
                     break;
 
                 case LadeskabState.DoorOpen: 
-                    _door.CloseDoor();
+                    
                     _display.ShowMessage("Indlæs RFID");
                     _state = LadeskabState.Available;
                     break;
