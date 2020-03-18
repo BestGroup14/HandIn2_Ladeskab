@@ -91,6 +91,8 @@ namespace HandIn2_Ladeskab
             }
         }
 
+
+
         public void DoorOpened(Object obj, EventArgs e)
         {
             //switch states
@@ -119,21 +121,22 @@ namespace HandIn2_Ladeskab
             }
         }
 
+
         public void DoorClosed(Object obj, EventArgs e)
         {
             //Switch states
             switch (_state)
             {
                 case LadeskabState.Available:
-                // 
+                // ingenting
 
 
                 case LadeskabState.DoorOpen:
-                    // 
+                    // ny tilstand
                     break;
 
                 case LadeskabState.Locked:
-                    // 
+                    // ingenting
 
 
                     break;
