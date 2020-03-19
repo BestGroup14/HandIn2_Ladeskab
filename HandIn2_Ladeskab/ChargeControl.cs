@@ -26,7 +26,7 @@ namespace HandIn2_Ladeskab
         }
 
 
-        private void HandleCurrentValueEvent(object obj, CurrentEventArgs e)
+        public void HandleCurrentValueEvent(object obj, CurrentEventArgs e)
         {
             if (_UsbCharger.CurrentValue == 0)
             {

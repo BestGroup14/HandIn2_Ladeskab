@@ -42,6 +42,12 @@ namespace Unit.Test.HandIn2
             _usbCharger.Received(1);
         }
 
+        [Test]
+        public void TestHandleCurrentValueEventMethod()
+        {
+            
+        }
+
 
     }
 }
