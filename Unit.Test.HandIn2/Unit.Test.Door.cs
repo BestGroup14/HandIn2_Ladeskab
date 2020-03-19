@@ -1,24 +1,40 @@
 ﻿using System;
 using System.Text;
 using System.Collections.Generic;
+using HandIn2_Ladeskab;
+using NSubstitute;
 using NUnit.Framework;
 
 namespace Unit.Test.HandIn2
 {
-    /// <summary>
-    /// Summary description for Unit
-    /// </summary>
+
     [TestFixture]
     public class TestDoor
     {
-        
+        private Door _uut;
+        private Display _display;
 
-        //[Test]
-        //public void TestMethod1()
-        //{
-        //    //
-        //    // TODO: Add test logic here
-        //    //
-        //}
+
+        [SetUp]
+        public void Setup()
+        {
+            _display = Substitute.For<Display>();
+            _uut = new Door(_display);
+        }
+
+
+        [Test]
+        public void TestLockDoorMethod()
+        {
+            _uut.LockDoor();
+            _display.Received(1);
+        }
+
+        [Test]
+        public void TestUnLockDoorMethod()
+        {
+            _uut.UnlockDoor();
+            _display.Received(1);
+        }
     }
 }
