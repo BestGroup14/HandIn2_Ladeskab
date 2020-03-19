@@ -1,69 +1,42 @@
 ﻿using System;
 using System.Text;
 using System.Collections.Generic;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using HandIn2_Ladeskab;
+using NSubstitute;
+using NUnit.Framework;
 
 namespace Unit.Test.HandIn2
 {
-    /// <summary>
-    /// Summary description for Unit
-    /// </summary>
-    [TestClass]
-    public class Unit
+    
+    [TestFixture]
+    public class TestRFIDReader
     {
-        public Unit()
+        private RFIDReader _uut;
+        private RFIDReaderEventArgs _revievedEventArgs;
+
+        [SetUp]
+        public void Setup()
         {
-            //
-            // TODO: Add constructor logic here
-            //
+            _revievedEventArgs = null;
+            _uut = new RFIDReader();
+            _uut.OnRfidRead(10);
+
+            _uut.RFIDReaderEvent += (o, args) => { _revievedEventArgs = args; };
         }
 
-        private TestContext testContextInstance;
 
-        /// <summary>
-        ///Gets or sets the test context which provides
-        ///information about and functionality for the current test run.
-        ///</summary>
-        public TestContext TestContext
+        [Test]
+        public void Set_recievedRFID_20()
         {
-            get
-            {
-                return testContextInstance;
-            }
-            set
-            {
-                testContextInstance = value;
-            }
+            _uut.OnRfidRead(20);
+            Assert.That(_revievedEventArgs.RFID, Is.EqualTo(20));
         }
 
-        #region Additional test attributes
-        //
-        // You can use the following additional attributes as you write your tests:
-        //
-        // Use ClassInitialize to run code before running the first test in the class
-        // [ClassInitialize()]
-        // public static void MyClassInitialize(TestContext testContext) { }
-        //
-        // Use ClassCleanup to run code after all tests in a class have run
-        // [ClassCleanup()]
-        // public static void MyClassCleanup() { }
-        //
-        // Use TestInitialize to run code before running each test 
-        // [TestInitialize()]
-        // public void MyTestInitialize() { }
-        //
-        // Use TestCleanup to run code after each test has run
-        // [TestCleanup()]
-        // public void MyTestCleanup() { }
-        //
-        #endregion
-
-        [TestMethod]
-        public void TestMethod1()
+        [Test]
+        public void Set_recievedRFID_notnull()
         {
-            //
-            // TODO: Add test logic here
-            //
+            _uut.OnRfidRead(20);
+            Assert.That(_revievedEventArgs, Is.Not.Null);
         }
     }
 }
