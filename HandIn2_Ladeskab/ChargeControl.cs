@@ -9,7 +9,6 @@ namespace HandIn2_Ladeskab
 {
     public class ChargeControl : IChargeControl
     {
-        private int chargeValue;
         private IUsbCharger _UsbCharger;
         private IDisplay _display;
 

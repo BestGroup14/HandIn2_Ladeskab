@@ -35,7 +35,7 @@ namespace Unit.Test.HandIn2
         [Test]
         public void Set_recievedRFID_notnull()
         {
-            _uut.OnRfidRead(20);
+            _uut.OnRfidRead(30);
             Assert.That(_revievedEventArgs, Is.Not.Null);
         }
     }

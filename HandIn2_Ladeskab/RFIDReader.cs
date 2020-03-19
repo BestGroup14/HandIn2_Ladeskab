@@ -13,8 +13,6 @@ namespace HandIn2_Ladeskab
 
     public class RFIDReader : IRFIDReader
     {
-        private int _oldRFIDNumber; 
-
         public event EventHandler<RFIDReaderEventArgs> RFIDReaderEvent;
 
         public void OnRfidRead(int id)
