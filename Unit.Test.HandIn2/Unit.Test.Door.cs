@@ -13,9 +13,6 @@ namespace Unit.Test.HandIn2
     {
         private Door _uut;
         private Display _display;
-        private StationControl _stationControl;
-
-     
 
         [SetUp]
         public void Setup()
@@ -23,7 +20,6 @@ namespace Unit.Test.HandIn2
             _display = Substitute.For<Display>();
             _uut = new Door(_display);
         }
-
 
         [Test]
         public void TestLockDoorMethod()
