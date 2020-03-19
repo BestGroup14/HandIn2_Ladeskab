@@ -19,11 +19,11 @@ namespace Unit.Test.HandIn2
             
         }
 
-        [Test]
-        public void TestMethod1()
-        {
+        //[Test]
+        //public void TestMethod1()
+        //{
             
-        }
+        //}
     }
 
 }

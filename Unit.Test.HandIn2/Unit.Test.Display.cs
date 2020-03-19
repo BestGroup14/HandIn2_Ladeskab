@@ -32,19 +32,21 @@ namespace Unit.Test.HandIn2
         }
 
 
-        [Test]
-        public void TestMethod1()
-        {
-            string testString = "Ladeskab låst";
-            _door.LockDoor();
+        //[Test]
+        //public void TestMethod1()
+        //{
+        //    string testString = "Ladeskab låst";
+        //    _door.LockDoor();
 
-            //Assert.That(_display.ShowMessage(testString));
+        //    Assert.That(_display.ShowMessage(testString));
 
             
-            _display.ShowMessage(testString);
+        //    _display.ShowMessage(testString);
 
-            Assert.That(testString, Is.EqualTo("Tilslut telefon"));
+        //    Assert.That(testString, Is.EqualTo("Tilslut telefon"));
 
-        }
+        //}
+
+
     }
 }

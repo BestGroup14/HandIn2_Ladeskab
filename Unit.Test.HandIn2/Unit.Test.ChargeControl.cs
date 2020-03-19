@@ -5,18 +5,10 @@ using NUnit.Framework;
 
 namespace Unit.Test.HandIn2
 {
-    /// <summary>
-    /// Summary description for Unit
-    /// </summary>
     [TestFixture]
     public class TestChargeControl
     {
         
-        public void TestMethod1()
-        {
-            //
-            // TODO: Add test logic here
-            //
-        }
+        
     }
 }

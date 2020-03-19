@@ -13,12 +13,12 @@ namespace Unit.Test.HandIn2
     {
         
 
-        [Test]
-        public void TestMethod1()
-        {
-            //
-            // TODO: Add test logic here
-            //
-        }
+        //[Test]
+        //public void TestMethod1()
+        //{
+        //    //
+        //    // TODO: Add test logic here
+        //    //
+        //}
     }
 }
