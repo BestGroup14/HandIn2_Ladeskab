@@ -62,7 +62,6 @@
     <Compile Include="Unit.Test.Display.cs" />
     <Compile Include="Unit.Test.Door.cs" />
     <Compile Include="Unit.Test.RFIDReader.cs" />
-    <Compile Include="Unit.Test.RFIDReaderEventArgs.cs" />
     <Compile Include="Unit.Test.StationControl.cs" />
     <Compile Include="Unit.Test.UsbChargerSimulator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
