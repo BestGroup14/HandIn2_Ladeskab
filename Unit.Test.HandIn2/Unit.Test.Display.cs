@@ -26,7 +26,7 @@ namespace Unit.Test.HandIn2
         public void string_check_Tilsluttelefon()
         {
             _uut.ShowMessage("Tilslut telefon");
-            _uut.Received(1).ShowMessage("Tilslut telefon");
+            _uut.Received(1);
         }
 
 
