@@ -33,6 +33,7 @@ namespace HandIn2_Ladeskab
         // Her mangler constructor
         public StationControl(IDoor door, IRFIDReader rfidReader, IDisplay display, IUsbCharger charger, ILogFile log)
         {
+            _state = LadeskabState.Available;
             _door = door;
             _display = display;
             _charger = charger;

@@ -27,23 +27,23 @@ namespace HandIn2_Ladeskab
 
         public void HandleCurrentValueEvent(object obj, CurrentEventArgs e)
         {
-            if (_UsbCharger.CurrentValue == 0)
+            if (e.Current == 0)
             {
                 _display.ShowMessage("---");
             }
 
-            if (_UsbCharger.CurrentValue > 0 && _UsbCharger.CurrentValue <= 5)
+            else if (e.Current > 0 && e.Current <= 5)
             {
                 _UsbCharger.StopCharge();
                 _display.ShowMessage("Telefonen er fuldt opladet");
             }
 
-            if (_UsbCharger.CurrentValue > 5 && _UsbCharger.CurrentValue <= 500)
+            else if (e.Current > 5 && e.Current <= 500)
             {
                 _display.ShowMessage("Telefon lader op");
             }
 
-            if (_UsbCharger.CurrentValue > 500)
+            else if (e.Current > 500)
             {
                 _UsbCharger.StopCharge();
                 _display.ShowMessage("Fjern straks telefonen");

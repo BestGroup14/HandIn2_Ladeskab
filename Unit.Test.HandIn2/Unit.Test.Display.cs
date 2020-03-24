@@ -12,20 +12,21 @@ namespace Unit.Test.HandIn2
     [TestFixture]
     public class TestDisplay
     {
-        private Display _uut;
+        private IDisplay _uut;
 
 
         [SetUp]
         public void Setup()
         {
-            _uut = Substitute.For<Display>();
+            _uut = Substitute.For<IDisplay>();
         }
 
 
         [Test]
         public void string_check_Tilsluttelefon()
         {
-            _uut.Received(1).ShowMessage("Tilslut telefon");
+            _uut.ShowMessage("Tilslut telefon");
+            _uut.Received(1);
         }
 
 

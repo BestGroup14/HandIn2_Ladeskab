@@ -12,12 +12,12 @@ namespace Unit.Test.HandIn2
     public class TestDoor
     {
         private Door _uut;
-        private Display _display;
+        private IDisplay _display;
 
         [SetUp]
         public void Setup()
         {
-            _display = Substitute.For<Display>();
+            _display = Substitute.For<IDisplay>();
             _uut = new Door(_display);
         }
 
