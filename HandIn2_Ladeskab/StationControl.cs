@@ -105,8 +105,6 @@ namespace HandIn2_Ladeskab
             }
         }
 
-
-
         public void DoorOpened(Object obj, EventArgs e)
         {
             //switch states
@@ -129,7 +127,6 @@ namespace HandIn2_Ladeskab
                     // ignore
 
                     break;
-
             }
         }
 

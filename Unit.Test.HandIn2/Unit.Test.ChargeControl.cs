@@ -45,7 +45,8 @@ namespace Unit.Test.HandIn2
         [Test]
         public void TestHandleCurrentValueEventMethod()
         {
-            
+            _usbCharger.StopCharge();
+            _usbCharger.Received(1);
         }
 
 
