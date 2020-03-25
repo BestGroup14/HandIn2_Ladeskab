@@ -10,13 +10,9 @@ namespace HandIn2_Ladeskab
     {
         event EventHandler DoorOpenedEvent;
         event EventHandler DoorClosedEvent;
-
         void OpenDoor();
-
         void CloseDoor();
-
         void LockDoor();
-
         void UnlockDoor();
     }
 }

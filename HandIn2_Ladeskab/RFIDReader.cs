@@ -14,12 +14,10 @@ namespace HandIn2_Ladeskab
     public class RFIDReader : IRFIDReader
     {
         public event EventHandler<RFIDReaderEventArgs> RFIDReaderEvent;
-
         public void OnRfidRead(int id)
         {
             DetectRFID(new RFIDReaderEventArgs{RFID = id});
         }
-
         protected virtual void DetectRFID(RFIDReaderEventArgs e)
         {
             RFIDReaderEvent?.Invoke(this,e);

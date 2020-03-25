@@ -59,7 +59,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Unit.Test.ChargeControl.cs" />
-    <Compile Include="Unit.Test.Display.cs" />
     <Compile Include="Unit.Test.Door.cs" />
     <Compile Include="Unit.Test.RFIDReader.cs" />
     <Compile Include="Unit.Test.StationControl.cs" />

@@ -12,18 +12,12 @@ namespace HandIn2_Ladeskab
         private IUsbCharger _UsbCharger;
         private IDisplay _display;
 
-
-        // tilføj eventhandler som tjekker opladning - får besked fra station control om at starte med at lade. Tjekekr for ny strømmåling. Eventhandler skla have if-sætning med værdier i tabellen. Hent CurrrentValue fra CurrentEventArgs inde i eventhandleren. 
-
-
-
         public ChargeControl(IUsbCharger usbCharger, IDisplay display)
         {
             _UsbCharger = usbCharger;
             usbCharger.CurrentValueEvent += HandleCurrentValueEvent;
             _display = display;
         }
-
 
         public void HandleCurrentValueEvent(object obj, CurrentEventArgs e)
         {
@@ -50,7 +44,6 @@ namespace HandIn2_Ladeskab
             }
 
         }
-
 
         public bool IsConnected()
         {

@@ -26,13 +26,11 @@ namespace HandIn2_Ladeskab
             _display.ShowMessage("Ladeskab låst");
         }
 
-
         public void OpenDoor()
         {
             DoorOpenedEvent?.Invoke(this,new EventArgs());
 
         }
-
         public void UnlockDoor()
         {
             _display.ShowMessage("Døren er låst op");
